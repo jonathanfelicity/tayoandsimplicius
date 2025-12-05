@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 const IMAGES = [
   // User's Couple Photo (First)
   "https://res.cloudinary.com/dmfm7iint/image/upload/v1764963048/LAR-2710_1_lfcnln.jpg",
+  // User's Second Couple Photo
+  "https://res.cloudinary.com/dmfm7iint/image/upload/v1764963747/LAR-2859_imevo8.jpg",
+  // User's Third Couple Photo
+  "https://res.cloudinary.com/dmfm7iint/image/upload/v1764963748/LAR-2982_nqgmk5.jpg",
   // Elegant Black Couple Wedding
   "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2400&auto=format&fit=crop",
   // Wedding Details/Vintage Car
