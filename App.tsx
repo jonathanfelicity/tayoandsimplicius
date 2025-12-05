@@ -12,11 +12,11 @@ const App: React.FC = () => {
   const WEDDING_DATE = "2025-12-06T11:00:00";
 
   return (
-    <div className="relative h-full min-h-screen w-full font-sans antialiased">
+    <div className="relative min-h-screen w-full font-sans antialiased">
       <BackgroundSlideshow />
 
       {/* Main Content Layer */}
-      <main className={`relative z-30 h-full min-h-screen flex flex-col justify-between p-6 sm:p-8 max-w-lg mx-auto transition-opacity duration-500 ${isMapOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      <main className={`relative z-30 min-h-screen flex flex-col justify-between p-6 sm:p-8 max-w-lg mx-auto transition-opacity duration-500 ${isMapOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         
         {/* Header */}
         <header className="text-center pt-8 sm:pt-16">
