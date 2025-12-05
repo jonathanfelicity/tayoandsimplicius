@@ -16,11 +16,6 @@ export interface Venue {
   lng: number;
 }
 
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-}
-
 export enum ViewState {
   MAIN = 'MAIN',
   MAP = 'MAP'
