@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const IMAGES = [
   // User's Couple Photo (First)
-  "https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg",
+  "https://res.cloudinary.com/dmfm7iint/image/upload/v1764963048/LAR-2710_1_lfcnln.jpg",
   // Elegant Black Couple Wedding
   "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2400&auto=format&fit=crop",
   // Wedding Details/Vintage Car
@@ -51,10 +51,10 @@ const BackgroundSlideshow: React.FC = () => {
 
       {/* Soft Film Grain Overlay */}
       <div className="absolute inset-0 grain-overlay z-10 pointer-events-none"></div>
-      
+
       {/* Gradient Overlay for Readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-transparent to-stone-900/90 z-20"></div>
-      <div className="absolute inset-0 bg-stone-900/20 mix-blend-multiply z-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/30 to-stone-900/90 z-20"></div>
+      <div className="absolute inset-0 bg-stone-900/40 mix-blend-multiply z-20"></div>
     </div>
   );
 };
