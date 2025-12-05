@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Volume2, VolumeX, Music } from 'lucide-react';
 
 // Romantic instrumental track suitable for weddings
-const AUDIO_URL = "https://cdn.pixabay.com/audio/2022/11/22/audio_febc508520.mp3"; 
+const AUDIO_URL = "https://cdn.pixabay.com/audio/2022/11/22/audio_febc508520.mp3";
 
 interface BackgroundAudioProps {
   isOverlayOpen?: boolean;
@@ -13,25 +13,54 @@ const BackgroundAudio: React.FC<BackgroundAudioProps> = ({ isOverlayOpen = false
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    // Attempt autoplay with low volume when component mounts
     const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.4; // Start at 40% volume for a gentle fade-in effect
+    if (!audio) return;
+
+    audio.volume = 0.4; // Start at 40% volume
+
+    // Function to attempt playing audio
+    const attemptPlay = () => {
+      if (isPlaying) return; // Already playing
+
       const playPromise = audio.play();
-      
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
             setIsPlaying(true);
+            // Remove listeners once playing
+            removeListeners();
           })
           .catch((error) => {
-            // Auto-play was prevented by the browser (normal behavior)
-            // User will need to interact to play
             console.log("Autoplay prevented:", error);
             setIsPlaying(false);
           });
       }
-    }
+    };
+
+    // Try to autoplay immediately
+    attemptPlay();
+
+    // Also listen for user interactions to start playing
+    const handleInteraction = () => {
+      attemptPlay();
+    };
+
+    const removeListeners = () => {
+      document.removeEventListener('click', handleInteraction);
+      document.removeEventListener('touchstart', handleInteraction);
+      document.removeEventListener('scroll', handleInteraction);
+      document.removeEventListener('keydown', handleInteraction);
+    };
+
+    // Add listeners for common user interactions
+    document.addEventListener('click', handleInteraction, { once: true });
+    document.addEventListener('touchstart', handleInteraction, { once: true });
+    document.addEventListener('scroll', handleInteraction, { once: true });
+    document.addEventListener('keydown', handleInteraction, { once: true });
+
+    return () => {
+      removeListeners();
+    };
   }, []);
 
   const togglePlay = () => {
@@ -54,16 +83,15 @@ const BackgroundAudio: React.FC<BackgroundAudioProps> = ({ isOverlayOpen = false
         loop
         preload="auto"
       />
-      <div 
+      <div
         className={`transition-all duration-500 ease-in-out ${isOverlayOpen ? 'opacity-0 translate-x-4 pointer-events-none' : 'opacity-100 translate-x-0'}`}
       >
         <button
           onClick={togglePlay}
-          className={`relative group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-md border border-white/10 transition-all duration-500 cursor-pointer touch-manipulation ${
-            isPlaying 
-              ? 'bg-amber-200/20 text-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.3)] border-amber-200/30' 
+          className={`relative group flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full backdrop-blur-md border border-white/10 transition-all duration-500 cursor-pointer touch-manipulation ${isPlaying
+              ? 'bg-amber-200/20 text-amber-200 shadow-[0_0_20px_rgba(251,191,36,0.3)] border-amber-200/30'
               : 'bg-stone-900/60 text-stone-400 hover:bg-stone-800/80 hover:text-amber-100'
-          }`}
+            }`}
           aria-label={isPlaying ? "Pause Music" : "Play Music"}
           title={isPlaying ? "Pause Music" : "Play Music"}
         >

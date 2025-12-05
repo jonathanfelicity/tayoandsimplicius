@@ -179,7 +179,7 @@ const MapModal: React.FC<MapModalProps> = ({ isOpen, onClose }) => {
               <h3 className="text-2xl text-amber-50 font-medium tracking-tight serif-font italic">Reception</h3>
               <p className="text-sm uppercase tracking-wider text-teal-200/80 mt-1 font-medium">Follows Immediately</p>
               <p className="text-base text-stone-300 mt-2 leading-relaxed font-light">
-                Sylnasmsali Event<br />
+                Synsamsali Event Center<br />
                 <span className="text-stone-400 text-sm">Jos, Plateau State</span>
               </p>
               <a
