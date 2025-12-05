@@ -17,11 +17,11 @@ const MapModal: React.FC<MapModalProps> = ({ isOpen, onClose }) => {
       }`}
     >
       {/* Modal Header */}
-      <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-20 bg-gradient-to-b from-stone-900 to-transparent">
-        <h2 className="serif-font text-3xl text-amber-50 tracking-tight italic">The Details</h2>
-        <button 
+      <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-20 bg-gradient-to-b from-stone-900 to-transparent pointer-events-none">
+        <h2 className="serif-font text-3xl text-amber-50 tracking-tight italic pointer-events-auto">The Details</h2>
+        <button
           onClick={onClose}
-          className="p-2 rounded-full bg-stone-800 text-amber-100 hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-200/20"
+          className="p-2 rounded-full bg-stone-800 text-amber-100 hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-200/20 pointer-events-auto cursor-pointer"
           aria-label="Close Map"
         >
           <X className="w-6 h-6 stroke-[1.5]" />
